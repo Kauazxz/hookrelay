@@ -1,0 +1,16 @@
+# build output
+/bin/
+/hookrelay
+
+# local data and config (may contain secrets)
+/data/
+*.jsonl
+/config.json
+.env
+
+# test / tooling
+*.out
+coverage.*
+.idea/
+.vscode/
+.DS_Store

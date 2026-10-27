@@ -1,0 +1,28 @@
+{
+  "addr": ":8080",
+  "log_level": "info",
+  "max_body_bytes": 1048576,
+  "store": {
+    "type": "file",
+    "path": "data/events.jsonl"
+  },
+  "dispatcher": {
+    "workers": 4,
+    "poll_interval": "1s",
+    "request_timeout": "10s",
+    "max_attempts": 8,
+    "backoff_base": "1s",
+    "backoff_max": "5m"
+  },
+  "sources": {
+    "payments": {
+      "signature_header": "X-Signature",
+      "signature_prefix": "sha256=",
+      "timestamp_header": "X-Timestamp",
+      "tolerance": "5m",
+      "idempotency_header": "Idempotency-Key",
+      "idempotency_field": "data.id",
+      "target_url": "http://localhost:9000/webhooks/payments"
+    }
+  }
+}
